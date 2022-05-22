@@ -1,0 +1,18 @@
+// FC0086
+$purpleColour: #FC0086;
+$whiteColor: rgb(255, 255, 255);
+
+@mixin buttonStyle($color, $fontSize, $width, $height, $backgroundColour) {
+  width: $width;
+  height: $height;
+  background-color: $color;
+  border: 0;
+  border-radius: 8px;
+  color: $whiteColor;
+  font-size: $fontSize;
+
+  &:hover {
+    background-color: $backgroundColour;
+    cursor: pointer;
+  }
+}

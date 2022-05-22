@@ -1,0 +1,71 @@
+@import '../Variables/Variables.scss';
+
+.allLoginContent {
+  height: 100vh;
+
+  .loginForm {
+    border: 2px solid red;
+    display: block;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .input {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+    border: 2px solid rgb(187, 187, 211);
+    border-radius: 4px;
+    width: 60%;
+    height: 40px;
+    font-size: large;
+    margin-top: 10px;
+  }
+
+  .form {
+    margin-top: 30px;
+    display: inline-block;
+    height: 50%;
+    width: 30%;
+    border-radius: 4px;
+    box-shadow: $purpleColour 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+
+    @media (max-width: 1200px) {
+      width: 80%;
+      margin-top: 80px;
+    }
+  }
+
+  .emailSection {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .passwordSection {
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  button {
+    @include buttonStyle($purpleColour, 20px, 150px, 50px, #5224D8)
+  }
+
+  .loginButton {
+    margin-top: 20px;
+  }
+
+  .signUpOption {
+    display: flex;
+    justify-content: center;
+  }
+
+  .loginLabel {
+    color: #FFFFFF;
+  }
+}

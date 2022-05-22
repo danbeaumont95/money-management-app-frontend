@@ -1,0 +1,101 @@
+.allLoginContent {
+  height: 100vh;
+}
+
+.allLoginContent .loginForm {
+  border: 2px solid red;
+  display: block;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.allLoginContent .input {
+  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto;
+  border: 2px solid #bbbbd3;
+  border-radius: 4px;
+  width: 60%;
+  height: 40px;
+  font-size: large;
+  margin-top: 10px;
+}
+
+.allLoginContent .form {
+  margin-top: 30px;
+  display: inline-block;
+  height: 50%;
+  width: 30%;
+  border-radius: 4px;
+  -webkit-box-shadow: #FC0086 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+          box-shadow: #FC0086 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+}
+
+@media (max-width: 1200px) {
+  .allLoginContent .form {
+    width: 80%;
+    margin-top: 80px;
+  }
+}
+
+.allLoginContent .emailSection {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.allLoginContent .passwordSection {
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.allLoginContent button {
+  width: 150px;
+  height: 50px;
+  background-color: #FC0086;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  font-size: 20px;
+}
+
+.allLoginContent button:hover {
+  background-color: #5224D8;
+  cursor: pointer;
+}
+
+.allLoginContent .loginButton {
+  margin-top: 20px;
+}
+
+.allLoginContent .signUpOption {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.allLoginContent .loginLabel {
+  color: #FFFFFF;
+}
+/*# sourceMappingURL=Login.css.map */
