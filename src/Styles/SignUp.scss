@@ -1,0 +1,65 @@
+@import '../Variables/Variables.scss';
+
+.allSignUpContent {
+  height: 100vh;
+
+  @media (max-width: 1200px) {
+    height: 100%;
+  }
+
+  .signUpForm {
+    display: inline-block;
+    height: 75%;
+    width: 30%;
+    border-radius: 4px;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+
+
+  }
+
+  .input {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+    border: 2px solid rgb(187, 187, 211);
+    border-radius: 4px;
+    width: 60%;
+    height: 40px;
+    font-size: large;
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+
+  .signUpLabel {
+    color: #FFFFFF;
+  }
+
+  button {
+    @include buttonStyle($purpleColour, 20px, 150px, 50px, #5224D8)
+  }
+
+  .signInButton {
+    margin-top: 20px;
+  }
+
+  .signUpForm {
+    margin-top: 30px;
+    display: inline-block;
+    height: 95%;
+    width: 30%;
+    border-radius: 4px;
+    box-shadow: $purpleColour 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+
+    @media (max-width: 500px) {
+      height: 750px;
+    }
+
+    @media (max-width: 1200px) {
+      width: 80%;
+      margin-top: 80px;
+    }
+  }
+}
