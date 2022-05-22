@@ -1,0 +1,15 @@
+@import '../Variables/Variables.scss';
+
+button {
+  @include buttonStyle($purpleColour, 20px, 150px, 50px, #5224D8)
+}
+
+.loginButton {
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.signUpButton {
+  margin-left: 10px;
+  margin-bottom: 20px;
+}

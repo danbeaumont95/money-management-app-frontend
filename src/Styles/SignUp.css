@@ -1,0 +1,88 @@
+.allSignUpContent {
+  height: 100vh;
+}
+
+@media (max-width: 1200px) {
+  .allSignUpContent {
+    height: 100%;
+  }
+}
+
+.allSignUpContent .signUpForm {
+  display: inline-block;
+  height: 75%;
+  width: 30%;
+  border-radius: 4px;
+  -webkit-box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+          box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+}
+
+.allSignUpContent .input {
+  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: auto;
+  border: 2px solid #bbbbd3;
+  border-radius: 4px;
+  width: 60%;
+  height: 40px;
+  font-size: large;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.allSignUpContent .signUpLabel {
+  color: #FFFFFF;
+}
+
+.allSignUpContent button {
+  width: 150px;
+  height: 50px;
+  background-color: #FC0086;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  font-size: 20px;
+}
+
+.allSignUpContent button:hover {
+  background-color: #5224D8;
+  cursor: pointer;
+}
+
+.allSignUpContent .signInButton {
+  margin-top: 20px;
+}
+
+.allSignUpContent .signUpForm {
+  margin-top: 30px;
+  display: inline-block;
+  height: 95%;
+  width: 30%;
+  border-radius: 4px;
+  -webkit-box-shadow: #FC0086 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+          box-shadow: #FC0086 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+}
+
+@media (max-width: 500px) {
+  .allSignUpContent .signUpForm {
+    height: 750px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .allSignUpContent .signUpForm {
+    width: 80%;
+    margin-top: 80px;
+  }
+}
+/*# sourceMappingURL=SignUp.css.map */

@@ -1,0 +1,25 @@
+button {
+  width: 150px;
+  height: 50px;
+  background-color: #FC0086;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  font-size: 20px;
+}
+
+button:hover {
+  background-color: #5224D8;
+  cursor: pointer;
+}
+
+.loginButton {
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.signUpButton {
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+/*# sourceMappingURL=Main.css.map */
