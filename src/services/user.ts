@@ -21,9 +21,31 @@ const signUp = async (firstName: string, lastName: string, email: string, passwo
   return res
 };
 
+const getLinkToken = async (token: string) => {
+  const res = await axios.get(`${url}/user/getLinkToken`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    }
+  })
+  return res
+}
+
+const exchangePublicTokenForAccesstoken = async (token: string, publicToken: string) => {
+  const res = await axios.post(`${url}/user/exchangePublicToken`, {
+    public_token: publicToken
+  },{
+    headers: {
+      authorization: `Bearer ${token}`,
+    }
+  })
+  return res
+}
+
 const UserService  = {
   login,
-  signUp
+  signUp,
+  getLinkToken,
+  exchangePublicTokenForAccesstoken
 }
 
 export default UserService
