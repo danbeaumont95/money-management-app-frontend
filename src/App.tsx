@@ -6,6 +6,7 @@ import {
   Routes,
   Route,
 } from 'react-router-dom';
+import PlaidLink from './Component/PlaidLink';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/plaidLink" element={<PlaidLink />} />
         </Routes>
       </Router>
     </div>
