@@ -1,5 +1,6 @@
 import { url } from "./url";
 import axios from "axios";
+import TokenService from "./token";
 
 const login = async (email: string, password: string) => {
   const res = await axios.post(`${url}/user/login`, {
@@ -22,6 +23,12 @@ const signUp = async (firstName: string, lastName: string, email: string, passwo
 };
 
 const getLinkToken = async (token: string) => {
+  const refreshToken: any = localStorage.getItem('refreshToken');
+
+  const checkIfTokenValid = await TokenService.refreshToken(token, refreshToken);
+  if (checkIfTokenValid.data.access_token) {
+    token = checkIfTokenValid.data?.access_token
+  }
   const res = await axios.get(`${url}/user/getLinkToken`, {
     headers: {
       authorization: `Bearer ${token}`,
@@ -31,9 +38,31 @@ const getLinkToken = async (token: string) => {
 }
 
 const exchangePublicTokenForAccesstoken = async (token: string, publicToken: string) => {
+  const refreshToken: any = localStorage.getItem('refreshToken');
+
+  const checkIfTokenValid = await TokenService.refreshToken(token, refreshToken);
+  if (checkIfTokenValid.data.access_token) {
+    token = checkIfTokenValid.data?.access_token
+  }
+  
   const res = await axios.post(`${url}/user/exchangePublicToken`, {
     public_token: publicToken
   },{
+    headers: {
+      authorization: `Bearer ${token}`,
+    }
+  })
+  return res
+}
+
+const getLinkedAccounts = async (token: string) => {
+  const refreshToken: any = localStorage.getItem('refreshToken');
+
+  const checkIfTokenValid = await TokenService.refreshToken(token, refreshToken);
+  if (checkIfTokenValid.data.access_token) {
+    token = checkIfTokenValid.data?.access_token
+  }
+  const res = await axios.get(`${url}/user/linkedAccounts`, {
     headers: {
       authorization: `Bearer ${token}`,
     }
@@ -45,7 +74,8 @@ const UserService  = {
   login,
   signUp,
   getLinkToken,
-  exchangePublicTokenForAccesstoken
+  exchangePublicTokenForAccesstoken,
+  getLinkedAccounts
 }
 
 export default UserService
