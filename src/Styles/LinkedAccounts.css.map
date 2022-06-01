@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,kBAAkB,CAAC;EACjB,MAAM,EAAE,aAAa;EACrB,UAAU,ECHG,OAAO,CDGM,GAAG,CAAC,GAAG,CAAC,IAAI,CAAC,GAAG,EAAE,mBAAmB,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG,CAAC,GAAG;EAC/E,KAAK,EAAE,KAAK;CACb",
+    "sources": [
+        "LinkedAccounts.scss",
+        "../Variables/Variables.scss"
+    ],
+    "names": [],
+    "file": "LinkedAccounts.css"
+}

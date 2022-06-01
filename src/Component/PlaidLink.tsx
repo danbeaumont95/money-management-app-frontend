@@ -55,12 +55,15 @@ const PlaidLink = (props: Props) => {
           })
       },
     });
-    
+
     return (
+      <>
       <button onClick={() => open()} disabled={!ready}>
         Connect a bank account
       </button>
+      </>
     )
+
 
 }
 
