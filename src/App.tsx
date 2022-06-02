@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import PlaidLink from './Component/PlaidLink';
 import LinkedAccounts from './Component/LinkedAccounts';
+import LinkedAccount from './Component/LinkedAccount';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/plaidLink" element={<PlaidLink />} />
         <Route path="/linkedAccounts" element={<LinkedAccounts />} />
+        <Route path="/linkedAccounts/:account_id" element={<LinkedAccount />} />
         </Routes>
       </Router>
     </div>

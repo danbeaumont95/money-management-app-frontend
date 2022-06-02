@@ -54,12 +54,15 @@ export default class LinkedAccounts extends Component<Props, State> {
       })
   }
 
+  onCardClick(id: string) {
+    return window.location.href=`/linkedAccounts/${id}`
+  }
     render() {
       const {accounts} = this.state;
       return (
         <>
         {accounts.length ? accounts.map((el) => (
-          <div className="linkedAccountCard">
+          <div className="linkedAccountCard" onClick={() => this.onCardClick(el.account_id)}>
             <p><strong>Account: </strong>{el.name}</p>
             <p><strong>Balance: </strong>{getSymbolFromCurrency(el.balances.iso_currency_code)}{el.balances.available}</p>
           </div>
