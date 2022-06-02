@@ -70,12 +70,28 @@ const getLinkedAccounts = async (token: string) => {
   return res
 }
 
+const getAllTransactions = async (token: string, time: string) => {
+  const refreshToken: any = localStorage.getItem('refreshToken');
+
+  const checkIfTokenValid = await TokenService.refreshToken(token, refreshToken);
+  if (checkIfTokenValid.data.access_token) {
+    token = checkIfTokenValid.data?.access_token
+  }
+  const res = await axios.get(`${url}/user/getTransactions/${time}`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    }
+  });
+  return res;
+}
+
 const UserService  = {
   login,
   signUp,
   getLinkToken,
   exchangePublicTokenForAccesstoken,
-  getLinkedAccounts
+  getLinkedAccounts,
+  getAllTransactions
 }
 
 export default UserService
