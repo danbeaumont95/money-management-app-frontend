@@ -1,6 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import '../Styles/LinkedAccount.css'
 import Swal from 'sweetalert2';
 import UserService from '../services/user';
+import getSymbolFromCurrency from 'currency-symbol-map';
+import { FaHourglassStart, FaMoneyCheckAlt } from 'react-icons/fa';
+import moment from 'moment';
+
 type IArrayOfStrings = Array<string>
 interface Location {
   address: any;
@@ -49,16 +54,95 @@ export interface Transaction {
   unofficial_currency_code: any;
 }
 
+interface FormattedDateData {
+  account_id: string;
+amount: number;
+category: IArrayOfStrings
+merchant_name: any;
+name:  string;
+pending: boolean;
+transaction_code: string;
+transaction_type:  string;
+payment_channel: string;
+iso_currency_code: string
+}
+
+interface FormattedDate {
+  date: string;
+  data: Array<FormattedDateData>;
+}
+
 type State = {
-  transactions: Array<Transaction>
+  transactions: Array<Transaction>;
+  formattedDates: Array<FormattedDate>;
 }
 type Props = {}
+
+const formatTransactionsByDate = (arr: Array<Transaction>) => {
+  const result = arr.reduce(
+    (
+      transaction: any,
+      {
+        date,
+        pending,
+        account_id,
+        amount,
+        category,
+        name,
+        merchant_name,
+        transaction_code,
+        transaction_type,
+        payment_channel,
+        iso_currency_code
+      }: { date: string; pending: boolean,account_id: string, amount: number, category: IArrayOfStrings,name: string, merchant_name: string, transaction_code: string,transaction_type: string, payment_channel: string, iso_currency_code: string}
+    ) => {
+      let match = transaction.find((e: any) => e.date === date);
+      if (match) {
+        match.data.push({
+          pending,
+          account_id,
+          amount,
+          category,
+          name,
+          merchant_name,
+          transaction_code,
+          transaction_type,
+          payment_channel,
+          iso_currency_code
+        });
+      } else {
+        match = {
+          date,
+          data: [
+            {
+              pending,
+              account_id,
+              amount,
+              category,
+              name,
+              merchant_name,
+              transaction_code,
+              transaction_type,
+              payment_channel,
+              iso_currency_code
+            }
+          ]
+        };
+        transaction.push(match);
+      }
+      return transaction;
+    },
+    []
+  );
+  return result;
+}
 
 export default class LinkedAccount extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      transactions: []
+      transactions: [],
+      formattedDates: []
     }
     this.onDayClick = this.onDayClick.bind(this)
     this.onWeekClick = this.onWeekClick.bind(this)
@@ -71,6 +155,7 @@ export default class LinkedAccount extends Component<Props, State> {
       .then((res) => {
         if (res.data.transactions) {
           this.setState({transactions: res.data.transactions})
+          this.setState({formattedDates: formatTransactionsByDate(res.data.transactions)})
         }
         else {
           return Swal.fire({
@@ -87,6 +172,9 @@ export default class LinkedAccount extends Component<Props, State> {
       .then((res) => {
         if (res.data.transactions) {
           this.setState({transactions: res.data.transactions})
+          // const differentDates: any = [...new Set(res.data.transactions.map((el: Transaction) => el.date))]
+       
+          this.setState({formattedDates: formatTransactionsByDate(res.data.transactions)})
         }
         else {
           return Swal.fire({
@@ -103,6 +191,8 @@ export default class LinkedAccount extends Component<Props, State> {
       .then((res) => {
         if (res.data.transactions) {
           this.setState({transactions: res.data.transactions})
+         
+          this.setState({formattedDates: formatTransactionsByDate(res.data.transactions)})
         }
         else {
           return Swal.fire({
@@ -119,6 +209,8 @@ export default class LinkedAccount extends Component<Props, State> {
       .then((res) => {
         if (res.data.transactions) {
           this.setState({transactions: res.data.transactions})
+          this.setState({formattedDates: formatTransactionsByDate(res.data.transactions)})
+
         }
         else {
           return Swal.fire({
@@ -129,18 +221,47 @@ export default class LinkedAccount extends Component<Props, State> {
       })
   }
   render() {
-    const { transactions } = this.state;
-    console.log(transactions, 'transactions');
+    const { transactions, formattedDates } = this.state;
+
     return (
       <>
-      <button onClick={this.onDayClick}>Day</button>
-      <button onClick={this.onWeekClick}>Week</button>
+      <button onClick={this.onDayClick} style={{marginRight: '10px'}}>Day</button>
+      <button onClick={this.onWeekClick} style={{marginRight: '10px'}}>Week</button>
       <button onClick={this.onMonthClick}>Month</button>
-      {transactions.length ? transactions.map((el) => (
-        <>
-        <h4>{el.amount}</h4>
-        </>
-      )): <h4>No transactions found</h4>}
+      <div className='allTransactionContainer'>
+
+      
+        {transactions.length ? formattedDates.map((el: FormattedDate) => {
+          return (
+            <>
+              <h4 style={{marginTop: '40px', textDecoration: 'underline'}}>{moment(el.date).format('MMMM Do YYYY')}</h4>
+                {el.data.map((el) => (
+                <div className='transactionCard'>
+                  <div className='name'>
+
+                    <h4>{el.name ? el.name : el.merchant_name}</h4>
+                  </div>
+                  <div className='amount'>
+
+                    <h4>{getSymbolFromCurrency(el.iso_currency_code)}{el.amount}</h4>
+                  </div>
+
+                  <div className='category'>
+                    <h4>{el.category.join(', ')}</h4>
+                  </div>
+                  
+                  <div className='paymentChannel'>
+                    <h4>{el.payment_channel}</h4>
+                  </div>
+
+                </div>
+              ))}
+
+            </>
+          )
+        }): <h4>No transactions found</h4>}
+      
+      </div>
       </>
     )
   }
