@@ -1,15 +1,13 @@
+@import '../Variables/Variables.scss';
+
 .allTransactionContainer {
   display: flex;
   flex-direction: column;
   position: relative;
-  // justify-content: center;
-  // align-content: center;
-  // flex-direction: column;
 
   .transactionCard {
     margin: auto;
     border-bottom: 2px solid rgb(224, 221, 221);
-    // width: 800px;
     margin-bottom: 50px;
     display: flex;
     height: 100px;
@@ -18,7 +16,6 @@
   .name {
     width: 300px;
     height: 100px;
-    // border: 2px solid cyan;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,7 +25,6 @@
   .amount {
     width: 100px;
     height: 100px;
-    // border: 2px solid cyan;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,7 +34,6 @@
   .category {
     width: 300px;
     height: 100px;
-    // border: 2px solid cyan;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,7 +43,6 @@
   .pending {
     width: 100px;
     height: 100px;
-    // border: 2px solid cyan;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,7 +51,6 @@
 
   .paymentChannel {
     height: 100px;
-    // border: 2px solid cyan;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,7 +59,6 @@
 
   .transactionType {
     height: 100px;
-    // border: 2px solid cyan;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,4 +68,14 @@
 .typeOfTransactions {
   border: 2px solid red;
   margin-top: 10px;
+
+}
+
+.buttonPressed {
+  background-color: #5224D8;
+
+  &:hover {
+    background-color: $purpleColour;
+    cursor: pointer;
+  }
 }
