@@ -230,7 +230,7 @@ export default class LinkedAccount extends Component<Props, State> {
 
   onInboundClick = () => {
     const { transactions } = this.state
-    const mappedTransactions = transactions.filter((el) => el.amount > 0);
+    const mappedTransactions = transactions.filter((el) => el.amount < 0);
     this.setState({formattedDates: formatTransactionsByDate(mappedTransactions)})
     this.setState({inboundOutbound: 'inbound'})
   }
@@ -241,7 +241,7 @@ export default class LinkedAccount extends Component<Props, State> {
   }
   onOutboundClick = () => {
     const { transactions } = this.state
-    const mappedTransactions = transactions.filter((el) => el.amount < 0);
+    const mappedTransactions = transactions.filter((el) => el.amount > 0);
     this.setState({formattedDates: formatTransactionsByDate(mappedTransactions)})
     this.setState({inboundOutbound: 'outbound'})
   }
@@ -259,39 +259,33 @@ export default class LinkedAccount extends Component<Props, State> {
         <button className={inboundOutbound === 'all' ? 'buttonPressed' : 'normalButton'} onClick={this.onAllClick} style={{marginRight: '5px'}}>All</button>
         <button className={inboundOutbound === 'outbound' ? 'buttonPressed' : 'normalButton'} onClick={this.onOutboundClick} style={{marginRight: '5px'}}>Outbound</button>
       </div>
-      <div className='allTransactionContainer'>
 
-      
-        {transactions.length ? formattedDates.map((el: FormattedDate) => {
+      <div className='tableContainer'>
+      <ul className="responsive-table">
+    <li className="table-header">
+      <div className="col col-1">Name</div>
+      <div className="col col-2">Amount</div>
+      <div className="col col-3">Category</div>
+      <div className="col col-4">Payment Channel</div>
+    </li>
+
+     {transactions.length ? formattedDates.map((el: FormattedDate) => {
           return (
             <>
               <h4 style={{marginTop: '40px', textDecoration: 'underline'}}>{moment(el.date).format('MMMM Do YYYY')}</h4>
                 {el.data.map((el) => (
-                <div className='transactionCard'>
-                  <div className='name'>
-
-                    <h4>{el.name ? el.name : el.merchant_name}</h4>
-                  </div>
-                  <div className='amount'>
-
-                    <h4>{getSymbolFromCurrency(el.iso_currency_code)}{el.amount}</h4>
-                  </div>
-
-                  <div className='category'>
-                    <h4>{el.category.join(', ')}</h4>
-                  </div>
-                  
-                  <div className='paymentChannel'>
-                    <h4>{el.payment_channel}</h4>
-                  </div>
-
-                </div>
+                      <li className="table-row">
+                      <div className="col col-1" data-label="Job Id">{el.name ? el.name : el.merchant_name}</div>
+                      <div className="col col-2" data-label="Customer Name">{getSymbolFromCurrency(el.iso_currency_code)}{el.amount.toString().indexOf('.') > 0 ? el.amount.toFixed(2) : el.amount}</div>
+                      <div className="col col-3" data-label="Amount">{el.category.join(', ')}</div>
+                      <div className="col col-4" data-label="Payment Status">{el.payment_channel}</div>
+                    </li>
               ))}
 
             </>
           )
         }): <h4>No transactions found</h4>}
-      
+  </ul>
       </div>
       </>
     )
