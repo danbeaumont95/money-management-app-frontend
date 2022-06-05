@@ -105,4 +105,9 @@
       -ms-flex-pack: center;
           justify-content: center;
 }
+
+.typeOfTransactions {
+  border: 2px solid red;
+  margin-top: 10px;
+}
 /*# sourceMappingURL=LinkedAccount.css.map */

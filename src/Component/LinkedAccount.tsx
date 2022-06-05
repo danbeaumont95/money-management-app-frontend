@@ -75,6 +75,7 @@ interface FormattedDate {
 type State = {
   transactions: Array<Transaction>;
   formattedDates: Array<FormattedDate>;
+  inboundOutbound: string;
 }
 type Props = {}
 
@@ -142,11 +143,15 @@ export default class LinkedAccount extends Component<Props, State> {
     super(props)
     this.state = {
       transactions: [],
-      formattedDates: []
+      formattedDates: [],
+      inboundOutbound: 'all'
     }
     this.onDayClick = this.onDayClick.bind(this)
     this.onWeekClick = this.onWeekClick.bind(this)
     this.onMonthClick = this.onMonthClick.bind(this)
+    this.onInboundClick = this.onInboundClick.bind(this);
+    this.onAllClick = this.onAllClick.bind(this);
+    this.onOutboundClick = this.onOutboundClick.bind(this);
   }
   componentDidMount() {
     const accessToken: any = localStorage.getItem('accessToken')
@@ -220,6 +225,21 @@ export default class LinkedAccount extends Component<Props, State> {
         }
       })
   }
+
+  onInboundClick = () => {
+    const { transactions } = this.state
+    const mappedTransactions = transactions.filter((el) => el.amount > 0);
+    this.setState({formattedDates: formatTransactionsByDate(mappedTransactions)})
+  }
+  onAllClick() {
+    const { transactions } = this.state
+    this.setState({formattedDates: formatTransactionsByDate(transactions)})
+  }
+  onOutboundClick = () => {
+    const { transactions } = this.state
+    const mappedTransactions = transactions.filter((el) => el.amount < 0);
+    this.setState({formattedDates: formatTransactionsByDate(mappedTransactions)})
+  }
   render() {
     const { transactions, formattedDates } = this.state;
 
@@ -228,6 +248,12 @@ export default class LinkedAccount extends Component<Props, State> {
       <button onClick={this.onDayClick} style={{marginRight: '10px'}}>Day</button>
       <button onClick={this.onWeekClick} style={{marginRight: '10px'}}>Week</button>
       <button onClick={this.onMonthClick}>Month</button>
+
+      <div className='typeOfTransactions'>
+        <button onClick={this.onInboundClick} style={{marginRight: '5px'}}>Inbound</button>
+        <button onClick={this.onAllClick}  style={{marginRight: '5px'}}>All</button>
+        <button onClick={this.onOutboundClick}  style={{marginRight: '5px'}}>Outbound</button>
+      </div>
       <div className='allTransactionContainer'>
 
       
