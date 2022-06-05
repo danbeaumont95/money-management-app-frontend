@@ -76,6 +76,7 @@ type State = {
   transactions: Array<Transaction>;
   formattedDates: Array<FormattedDate>;
   inboundOutbound: string;
+  date: string;
 }
 type Props = {}
 
@@ -144,7 +145,8 @@ export default class LinkedAccount extends Component<Props, State> {
     this.state = {
       transactions: [],
       formattedDates: [],
-      inboundOutbound: 'all'
+      inboundOutbound: 'all',
+      date: 'week'
     }
     this.onDayClick = this.onDayClick.bind(this)
     this.onWeekClick = this.onWeekClick.bind(this)
@@ -177,9 +179,8 @@ export default class LinkedAccount extends Component<Props, State> {
       .then((res) => {
         if (res.data.transactions) {
           this.setState({transactions: res.data.transactions})
-          // const differentDates: any = [...new Set(res.data.transactions.map((el: Transaction) => el.date))]
-       
           this.setState({formattedDates: formatTransactionsByDate(res.data.transactions)})
+          this.setState({date: 'day'})
         }
         else {
           return Swal.fire({
@@ -196,8 +197,8 @@ export default class LinkedAccount extends Component<Props, State> {
       .then((res) => {
         if (res.data.transactions) {
           this.setState({transactions: res.data.transactions})
-         
           this.setState({formattedDates: formatTransactionsByDate(res.data.transactions)})
+          this.setState({date: 'week'})
         }
         else {
           return Swal.fire({
@@ -215,6 +216,7 @@ export default class LinkedAccount extends Component<Props, State> {
         if (res.data.transactions) {
           this.setState({transactions: res.data.transactions})
           this.setState({formattedDates: formatTransactionsByDate(res.data.transactions)})
+          this.setState({date: 'month'})
 
         }
         else {
@@ -230,29 +232,32 @@ export default class LinkedAccount extends Component<Props, State> {
     const { transactions } = this.state
     const mappedTransactions = transactions.filter((el) => el.amount > 0);
     this.setState({formattedDates: formatTransactionsByDate(mappedTransactions)})
+    this.setState({inboundOutbound: 'inbound'})
   }
   onAllClick() {
     const { transactions } = this.state
     this.setState({formattedDates: formatTransactionsByDate(transactions)})
+    this.setState({inboundOutbound: 'all'})
   }
   onOutboundClick = () => {
     const { transactions } = this.state
     const mappedTransactions = transactions.filter((el) => el.amount < 0);
     this.setState({formattedDates: formatTransactionsByDate(mappedTransactions)})
+    this.setState({inboundOutbound: 'outbound'})
   }
   render() {
-    const { transactions, formattedDates } = this.state;
+    const { transactions, formattedDates, inboundOutbound, date } = this.state;
 
     return (
       <>
-      <button onClick={this.onDayClick} style={{marginRight: '10px'}}>Day</button>
-      <button onClick={this.onWeekClick} style={{marginRight: '10px'}}>Week</button>
-      <button onClick={this.onMonthClick}>Month</button>
+      <button className={date === 'day' ? 'buttonPressed' : 'normalButton'} onClick={this.onDayClick} style={{marginRight: '10px'}}>Day</button>
+      <button className={date === 'week' ? 'buttonPressed' : 'normalButton'} onClick={this.onWeekClick} style={{marginRight: '10px'}}>Week</button>
+      <button className={date === 'month' ? 'buttonPressed' : 'normalButton'} onClick={this.onMonthClick}>Month</button>
 
       <div className='typeOfTransactions'>
-        <button onClick={this.onInboundClick} style={{marginRight: '5px'}}>Inbound</button>
-        <button onClick={this.onAllClick}  style={{marginRight: '5px'}}>All</button>
-        <button onClick={this.onOutboundClick}  style={{marginRight: '5px'}}>Outbound</button>
+        <button className={inboundOutbound === 'inbound' ? 'buttonPressed' : 'normalButton'} onClick={this.onInboundClick} style={{marginRight: '5px'}}>Inbound</button>
+        <button className={inboundOutbound === 'all' ? 'buttonPressed' : 'normalButton'} onClick={this.onAllClick} style={{marginRight: '5px'}}>All</button>
+        <button className={inboundOutbound === 'outbound' ? 'buttonPressed' : 'normalButton'} onClick={this.onOutboundClick} style={{marginRight: '5px'}}>Outbound</button>
       </div>
       <div className='allTransactionContainer'>
 
