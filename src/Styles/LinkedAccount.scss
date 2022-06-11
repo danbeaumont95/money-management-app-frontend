@@ -80,14 +80,18 @@
 }
 
 .tableContainer {
-  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 10px;
   padding-right: 10px;
+  flex-basis: 80%;
 }
 
 .responsive-table {
+  border-left: 2px solid gray;
+  border-right: 2px solid gray;
+  padding-right: 40px;
+
   li {
     border-radius: 3px;
     padding: 25px 30px;
@@ -156,3 +160,26 @@
     }
   }
 }
+
+.modalAndTransactionContainer {
+  display: flex;
+}
+
+.modalAndTransactionContainerModalShown {
+  display: flex;
+  margin-left: 105px;
+}
+
+.transactionsAndModal {
+  display: flex;
+}
+
+.transactionsAndModalFalse {
+  border: none
+}
+
+.allButtonsModalShown {
+  margin-left: 105px;
+}
+
+.allButtons {}
