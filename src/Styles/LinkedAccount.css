@@ -120,11 +120,18 @@
 }
 
 .tableContainer {
-  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 10px;
   padding-right: 10px;
+  -ms-flex-preferred-size: 80%;
+      flex-basis: 80%;
+}
+
+.responsive-table {
+  border-left: 2px solid gray;
+  border-right: 2px solid gray;
+  padding-right: 40px;
 }
 
 .responsive-table li {
@@ -198,5 +205,32 @@
         flex-basis: 50%;
     text-align: right;
   }
+}
+
+.modalAndTransactionContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modalAndTransactionContainerModalShown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 105px;
+}
+
+.transactionsAndModal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.transactionsAndModalFalse {
+  border: none;
+}
+
+.allButtonsModalShown {
+  margin-left: 105px;
 }
 /*# sourceMappingURL=LinkedAccount.css.map */
