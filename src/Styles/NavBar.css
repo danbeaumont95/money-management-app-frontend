@@ -1,0 +1,58 @@
+.navbar-left {
+  text-align: left;
+}
+
+.navbar-right {
+  text-align: right;
+}
+
+.navbar-center {
+  text-align: center;
+}
+
+.title {
+  padding-left: 15px;
+  color: white;
+}
+
+.navbar {
+  background-color: #5792d5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50px;
+}
+
+.nav-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.nav-item {
+  display: inline-block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white;
+}
+
+.signOutButton {
+  height: 30px;
+  background-color: red;
+  width: 100px;
+  display: inline-block;
+  margin: auto;
+  margin-right: 10px;
+}
+
+.signOutButton:hover {
+  background-color: black;
+  cursor: pointer;
+}
+/*# sourceMappingURL=NavBar.css.map */

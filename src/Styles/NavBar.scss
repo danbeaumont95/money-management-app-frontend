@@ -1,0 +1,49 @@
+.navbar-left {
+  text-align: left;
+}
+
+.navbar-right {
+  text-align: right;
+}
+
+.navbar-center {
+  text-align: center;
+}
+
+.title {
+  padding-left: 15px;
+  color: white;
+}
+
+.navbar {
+  background-color: rgb(87, 146, 213);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-item {
+  display: inline-block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white;
+}
+
+.signOutButton {
+  height: 30px;
+  background-color: red;
+  width: 100px;
+  display: inline-block;
+  margin: auto;
+  margin-right: 10px;
+
+  &:hover {
+    background-color: black;
+    cursor: pointer;
+  }
+}
