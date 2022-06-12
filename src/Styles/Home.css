@@ -1,0 +1,20 @@
+.paymentChannelChartContainer {
+  display: inline-block;
+}
+
+.paymentChannelChartContainer .paymentChannelChart {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.amountOfTransactionsBySpendChartContainer {
+  display: inline-block;
+}
+
+.amountOfTransactionsBySpendChartContainer .amountOfTransactionsBySpendChart {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+/*# sourceMappingURL=Home.css.map */

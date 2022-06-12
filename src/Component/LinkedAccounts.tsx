@@ -12,7 +12,7 @@ interface AccountBalance {
   unofficial_currency_code: any
 }
 
-interface Account {
+export interface Account {
   account_id: string;
   balances: AccountBalance;
   mask: string;
@@ -61,6 +61,7 @@ export default class LinkedAccounts extends Component<Props, State> {
       const {accounts} = this.state;
       return (
         <>
+        <h1>Linked Accounts</h1>
         {accounts.length ? accounts.map((el) => (
           <div className="linkedAccountCard" onClick={() => this.onCardClick(el.account_id)}>
             <p><strong>Account: </strong>{el.name}</p>
