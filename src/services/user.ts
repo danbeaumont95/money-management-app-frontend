@@ -85,7 +85,7 @@ const getAllTransactions = async (token: string, time: string) => {
   return res;
 }
 
-const UserService  = {
+const UserService = {
   login,
   signUp,
   getLinkToken,

@@ -4,6 +4,7 @@ import '../Styles/Home.css'
 import Swal from 'sweetalert2';
 import UserService from '../services/user';
 import {Transaction} from './LinkedAccount';
+import UtilFunctions from '../utils/utils';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, LineController, BarElement } from 'chart.js';
 import { Bar, Pie } from 'react-chartjs-2';
 import PacmanLoader from "react-spinners/PacmanLoader";
@@ -99,28 +100,41 @@ export default class Home extends Component<Props, State> {
     };
 
     const transactionsByCategoryData = {
-      labels: ['Shops', 'Transfer', 'Restaurants'],
+      labels: UtilFunctions.getMostCommonTransactionCategories(this.state.transactions).slice(0,5).map((el) => Object.entries(el)[0][1]),
       datasets: [
         {
           label: 'Payment Channel',
-          data: [this.state.transactions.filter((el) => el.category.includes('Shops')).length, this.state.transactions.filter((el) => el.category.includes('Transfer')).length, this.state.transactions.filter((el) => el.category.includes('Restaurants')).length,],
+          data: UtilFunctions.getMostCommonTransactionCategories(this.state.transactions).slice(0,5).map((el) => Object.entries(el)[1][1]),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
-            'rgba(10, 30, 235, 0.2)',
+            'rgba(80, 30, 235, 0.2)',
+            'rgba(120, 200, 125, 0.2)',
+            'rgba(190, 120, 235, 0.2)',
             ],
           borderColor: [
             'rgba(255, 99, 132, 1)',
             'rgba(54, 162, 235, 1)',
+            'rgba(80, 30, 235, 1)',
+            'rgba(120, 200, 125, 1)',
+            'rgba(190, 120, 235, 1)',
           ],
           borderWidth: 1,
         }
       ]
     }
-    const {transactions, loading} = this.state;
 
-    if (loading) return(<div style={{border: '2px solid red'}}><PacmanLoader color='#36D7B7' loading={loading} size={15} /><br /> <h2>Loading...</h2></div> )
+    const { transactions, loading } = this.state;
 
+    if (loading) {
+      return (
+        <div style={{border: '2px solid red'}}>
+          <PacmanLoader color='#36D7B7' loading={loading} size={15} />
+          <br />
+          <h2>Loading...</h2>
+        </div> 
+      )
+    }
 
     return (
       <>
@@ -141,7 +155,7 @@ export default class Home extends Component<Props, State> {
         </div>
         </div>
         <div className='amountOfTransactionsBySpendChartContainer' >
-          <h4>Price</h4>
+          <h4>Amount spent in price range</h4>
           <div className='amountOfTransactionsBySpendChart'>
           <Bar
             data={amountSpentData}
@@ -154,7 +168,7 @@ export default class Home extends Component<Props, State> {
 
 
         <div className='transactionsByCategoryChartContainer' >
-          <h4>Price</h4>
+          <h4>Most common transaction categories</h4>
           <div className='transactionsByCategoryChart'>
           <Pie
               data={transactionsByCategoryData}
