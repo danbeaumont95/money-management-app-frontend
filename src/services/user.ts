@@ -34,7 +34,7 @@ const getLinkToken = async (token: string) => {
   const refreshToken: any = localStorage.getItem('refreshToken');
 
   const checkIfTokenValid = await TokenService.refreshToken(token, refreshToken);
-  if (checkIfTokenValid.data.access_token) {
+  if (checkIfTokenValid.data?.access_token) {
     token = checkIfTokenValid.data?.access_token;
   }
   const res = await axios.get(`${url}/user/getLinkToken`, {
@@ -49,7 +49,7 @@ const exchangePublicTokenForAccesstoken = async (token: string, publicToken: str
   const refreshToken: any = localStorage.getItem('refreshToken');
 
   const checkIfTokenValid = await TokenService.refreshToken(token, refreshToken);
-  if (checkIfTokenValid.data.access_token) {
+  if (checkIfTokenValid.data?.access_token) {
     token = checkIfTokenValid.data?.access_token;
   }
 
@@ -67,7 +67,7 @@ const getLinkedAccounts = async (token: string) => {
   const refreshToken: any = localStorage.getItem('refreshToken');
 
   const checkIfTokenValid = await TokenService.refreshToken(token, refreshToken);
-  if (checkIfTokenValid.data.access_token) {
+  if (checkIfTokenValid.data?.access_token) {
     token = checkIfTokenValid.data?.access_token;
   }
   const res = await axios.get(`${url}/user/linkedAccounts`, {
@@ -82,9 +82,11 @@ const getAllTransactions = async (token: string, time: string) => {
   const refreshToken: any = localStorage.getItem('refreshToken');
 
   const checkIfTokenValid = await TokenService.refreshToken(token, refreshToken);
-  if (checkIfTokenValid.data.access_token) {
+
+  if (checkIfTokenValid.data?.access_token) {
     token = checkIfTokenValid.data?.access_token;
   }
+
   const res = await axios.get(`${url}/user/getTransactions/${time}`, {
     headers: {
       authorization: `Bearer ${token}`,
