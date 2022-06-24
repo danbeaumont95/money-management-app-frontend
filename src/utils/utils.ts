@@ -30,8 +30,11 @@ const getMostCommonTransactionCategories = (arr:Array<Transaction>) => {
   return sortedArray;
 };
 
+const generateRandomUserName = (email: string) => email.slice(0, email.indexOf('@')) + Math.floor(Math.random() * 300 + 100);
+
 const UtilFunctions = {
   getMostCommonTransactionCategories,
+  generateRandomUserName,
 };
 
 export default UtilFunctions;
