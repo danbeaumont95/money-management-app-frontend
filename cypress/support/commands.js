@@ -23,3 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('loginToApp', (email, password) => {
+  cy.visit('http://localhost:3000/');
+  cy.get('#loginEmailInput').type(email); // works using first user, need to change home to show something if no data
+  cy.get('#loginPasswordInput').type(password);
+  cy.get('#loginNowButton').click();
+  cy.get('.swal2-confirm.swal2-styled').click();
+});
