@@ -1,11 +1,15 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true,
+    "jest": true,
+    "mocha": true // << Add this line
   },
   "extends": [
     "plugin:react/recommended",
-    "airbnb"
+    "airbnb",
+    "plugin:cypress/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
