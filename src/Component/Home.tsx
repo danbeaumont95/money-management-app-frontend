@@ -48,10 +48,18 @@ export default class Home extends Component<Props, State> {
 
     UserService.getAllTransactions(accessToken, 'month')
       // eslint-disable-next-line consistent-return
-      .then((res) => {
+      .then((res): any => {
         if (res.data.transactions) {
           this.setState({ transactions: res.data.transactions });
           this.setState({ loading: false });
+        } else if (res.data.message) {
+          return Swal.fire({
+            title: 'No linked accounts yet',
+            text: 'Please click OK to be redirected to link an account',
+          })
+            .then(() => {
+              window.location.href = 'plaidLink';
+            });
         } else {
           return Swal.fire({
             title: 'Error',
