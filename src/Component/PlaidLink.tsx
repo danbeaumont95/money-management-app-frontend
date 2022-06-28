@@ -59,9 +59,12 @@ function PlaidLink(props: Props) {
   });
 
   return (
-    <button onClick={() => open()} disabled={!ready} type="button">
-      Connect a bank account
-    </button>
+    <div className="connectBankAccountContainer">
+
+      <button onClick={() => open()} disabled={!ready} type="button" className="linkPlaidAccount">
+        Connect a bank account
+      </button>
+    </div>
   );
 }
 
