@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import UserService from '../services/user';
 import * as Types from '../store/types';
+// import PlaidLinkImage from '../Images/PlaidLink.png';
+import PlaidLinkImage from '../Images/PlaidLink.webp';
 
 type State = {}
 type Props = {
@@ -59,11 +61,21 @@ function PlaidLink(props: Props) {
   });
 
   return (
-    <div className="connectBankAccountContainer">
+    <div className="allPlaidLinkContent">
+      <h2>Link your bank accounts!</h2>
+      <h4>
+        By clicking the below button, you will be
+        taken through our open banking service providers (Plaid) pop up web app.
+        This is fully secure, and has all the UK&#39;s major banking companies for
+        you to link all of your bank accounts to Dans Money.
+      </h4>
+      <img src={PlaidLinkImage} alt="link" />
+      <div className="connectBankAccountContainer">
 
-      <button onClick={() => open()} disabled={!ready} type="button" className="linkPlaidAccount">
-        Connect a bank account
-      </button>
+        <button onClick={() => open()} disabled={!ready} type="button" className="linkPlaidAccount">
+          Connect a bank account
+        </button>
+      </div>
     </div>
   );
 }
