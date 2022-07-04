@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,KAAK,EAAE,GAAG;EACV,YAAY,EAAE,IAAI;EAClB,aAAa,EAAE,IAAI;EACnB,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,IAAI;CACpB",
+    "sources": [
+        "PlaidLink.scss"
+    ],
+    "names": [],
+    "file": "PlaidLink.css"
+}

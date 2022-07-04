@@ -175,11 +175,14 @@
 }
 
 .transactionsAndModalFalse {
-  border: none
+  border: none;
 }
 
 .allButtonsModalShown {
   margin-left: 105px;
+  padding-top: 20px;
 }
 
-.allButtons {}
+.allButtons {
+  padding-top: 20px;
+}
