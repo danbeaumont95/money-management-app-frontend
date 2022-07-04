@@ -8,6 +8,8 @@ import UserService from '../services/user';
 import * as Types from '../store/types';
 // import PlaidLinkImage from '../Images/PlaidLink.png';
 import PlaidLinkImage from '../Images/PlaidLink.webp';
+import NavBar from './NavBar';
+import '../Styles/PlaidLink.css';
 
 type State = {}
 type Props = {
@@ -62,17 +64,21 @@ function PlaidLink(props: Props) {
 
   return (
     <div className="allPlaidLinkContent">
+      <NavBar />
       <h2>Link your bank accounts!</h2>
-      <h4>
-        By clicking the below button, you will be
-        taken through our open banking service providers (Plaid) pop up web app.
-        This is fully secure, and has all the UK&#39;s major banking companies for
-        you to link all of your bank accounts to Dans Money.
-      </h4>
-      <img src={PlaidLinkImage} alt="link" />
+      <div className="plaidText">
+
+        <p>
+          By clicking the below button, you will be
+          taken through our open banking service providers (Plaid) pop up web app.
+          This is fully secure, and has all the UK&#39;s major banking companies for
+          you to link all of your bank accounts to Dans Money.
+        </p>
+      </div>
+      <img src={PlaidLinkImage} alt="link" width="500px" style={{ marginBottom: '10px' }} className="plaidImage" />
       <div className="connectBankAccountContainer">
 
-        <button onClick={() => open()} disabled={!ready} type="button" className="linkPlaidAccount">
+        <button onClick={() => open()} disabled={!ready} type="button" className="linkPlaidAccount" style={{ width: '250px' }}>
           Connect a bank account
         </button>
       </div>

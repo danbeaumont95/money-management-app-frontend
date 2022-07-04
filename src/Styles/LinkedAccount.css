@@ -232,5 +232,10 @@
 
 .allButtonsModalShown {
   margin-left: 105px;
+  padding-top: 20px;
+}
+
+.allButtons {
+  padding-top: 20px;
 }
 /*# sourceMappingURL=LinkedAccount.css.map */

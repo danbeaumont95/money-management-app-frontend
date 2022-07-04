@@ -4,6 +4,7 @@ import '../Styles/LinkedAccounts.css';
 import Swal from 'sweetalert2';
 import getSymbolFromCurrency from 'currency-symbol-map';
 import UserService from '../services/user';
+import NavBar from './NavBar';
 
 interface AccountBalance {
   available: number;
@@ -66,6 +67,7 @@ export default class LinkedAccounts extends Component<Props, State> {
     const { accounts } = this.state;
     return (
       <>
+        <NavBar />
         <h1>Linked Accounts</h1>
         {accounts.length ? accounts.map((el) => (
           // eslint-disable-next-line jsx-a11y/click-events-have-key-events

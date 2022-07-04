@@ -9,6 +9,7 @@ import moment from 'moment';
 import UserService from '../services/user';
 // eslint-disable-next-line import/no-cycle
 import TransactionModal from './TransactionModal';
+import NavBar from './NavBar';
 
 type IArrayOfStrings = Array<string>
 interface Location {
@@ -298,6 +299,7 @@ export default class LinkedAccount extends Component<Props, State> {
     } = this.state;
     return (
       <div className={showTransactionModal ? 'transactionsAndModal' : 'transactionsAndModalFalse'}>
+        <NavBar />
         <div className="listOfTransactions">
           <div className={showTransactionModal ? 'allButtonsModalShown' : 'allButtons'}>
 
