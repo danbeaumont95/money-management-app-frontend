@@ -36,9 +36,10 @@ export default class Login extends Component<Props, State> {
           });
         }
         if (data.access_token) {
-          const { access_token, refresh_token } = data;
+          const { access_token, refresh_token, user_id } = data;
           localStorage.setItem('accessToken', access_token);
           localStorage.setItem('refreshToken', refresh_token);
+          localStorage.setItem('userId', user_id);
           return Swal.fire({
             title: 'Success',
             text: 'You are now logged in! You will be redirected to the homepage',
