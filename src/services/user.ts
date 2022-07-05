@@ -95,6 +95,23 @@ const getAllTransactions = async (token: string, time: string) => {
   return res;
 };
 
+const getMyDetails = async (token: string) => {
+  const refreshToken: any = localStorage.getItem('refreshToken');
+
+  const checkIfTokenValid = await TokenService.refreshToken(token, refreshToken);
+
+  if (checkIfTokenValid.data?.access_token) {
+    token = checkIfTokenValid.data?.access_token;
+  }
+
+  const res = await axios.get(`${url}/user/getMe`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+  return res;
+};
+
 const UserService = {
   login,
   signUp,
@@ -102,6 +119,7 @@ const UserService = {
   exchangePublicTokenForAccesstoken,
   getLinkedAccounts,
   getAllTransactions,
+  getMyDetails,
 };
 
 export default UserService;
