@@ -112,6 +112,38 @@ const getMyDetails = async (token: string) => {
   return res;
 };
 
+const updateMyDetails = async (
+  token: string,
+  firstName: string,
+  lastName: string,
+  email: string,
+  password: string,
+  mobileNumber: number,
+  username: string,
+) => {
+  const refreshToken: any = localStorage.getItem('refreshToken');
+
+  const checkIfTokenValid = await TokenService.refreshToken(token, refreshToken);
+
+  if (checkIfTokenValid.data?.access_token) {
+    token = checkIfTokenValid.data?.access_token;
+  }
+
+  const res = await axios.patch(`${url}/user/updateMyDetails`, {
+    firstName,
+    lastName,
+    email,
+    password,
+    mobileNumber,
+    username,
+  }, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+  return res;
+};
+
 const UserService = {
   login,
   signUp,
@@ -120,6 +152,7 @@ const UserService = {
   getLinkedAccounts,
   getAllTransactions,
   getMyDetails,
+  updateMyDetails,
 };
 
 export default UserService;
