@@ -1,1 +1,29 @@
-.allProfileContent {}
+.allProfileContent {
+  .updateDetailsForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .detailsSection {
+      width: 600px;
+      padding-bottom: 30px;
+      display: flex;
+
+      .updateDetailsLabel {
+        // border: 2px solid red;
+        border-radius: 12px;
+        width: 180px;
+        margin: auto;
+      }
+
+      .detailsInput {
+        // border: 2px solid blue;
+        border-radius: 4px;
+        width: 600px;
+        height: 30px;
+        // padding-bottom: 0px;
+      }
+    }
+  }
+}

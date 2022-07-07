@@ -1,1 +1,36 @@
-/* No CSS *//*# sourceMappingURL=Profile.css.map */
+.allProfileContent .updateDetailsForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.allProfileContent .updateDetailsForm .detailsSection {
+  width: 600px;
+  padding-bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.allProfileContent .updateDetailsForm .detailsSection .updateDetailsLabel {
+  border-radius: 12px;
+  width: 180px;
+  margin: auto;
+}
+
+.allProfileContent .updateDetailsForm .detailsSection .detailsInput {
+  border-radius: 4px;
+  width: 600px;
+  height: 30px;
+}
+/*# sourceMappingURL=Profile.css.map */
