@@ -4,6 +4,8 @@
 import React, { Component } from 'react';
 import '../Styles/LinkedAccount.css';
 import Swal from 'sweetalert2';
+import PacmanLoader from 'react-spinners/PacmanLoader';
+import { RingLoader } from 'react-spinners';
 import getSymbolFromCurrency from 'currency-symbol-map';
 import moment from 'moment';
 import UserService from '../services/user';
@@ -83,7 +85,9 @@ type State = {
   inboundOutbound: string;
   date: string;
   showTransactionModal: boolean;
-  transactionModalTransaction: FormattedDateData
+  transactionModalTransaction: FormattedDateData;
+  loading: boolean;
+  buttonChangeLoading: boolean;
 }
 type Props = {}
 
@@ -178,6 +182,8 @@ export default class LinkedAccount extends Component<Props, State> {
         payment_channel: '',
         iso_currency_code: '',
       },
+      loading: true,
+      buttonChangeLoading: false,
     };
     this.onDayClick = this.onDayClick.bind(this);
     this.onWeekClick = this.onWeekClick.bind(this);
@@ -196,6 +202,7 @@ export default class LinkedAccount extends Component<Props, State> {
         if (res.data.transactions) {
           this.setState({ transactions: res.data.transactions });
           this.setState({ formattedDates: formatTransactionsByDate(res.data.transactions) });
+          this.setState({ loading: false });
         } else {
           return Swal.fire({
             title: 'Error',
@@ -206,6 +213,7 @@ export default class LinkedAccount extends Component<Props, State> {
   }
 
   onDayClick() {
+    this.setState({ buttonChangeLoading: true });
     const accessToken: any = localStorage.getItem('accessToken');
     UserService.getAllTransactions(accessToken, 'day')
       // eslint-disable-next-line consistent-return
@@ -214,6 +222,8 @@ export default class LinkedAccount extends Component<Props, State> {
           this.setState({ transactions: res.data.transactions });
           this.setState({ formattedDates: formatTransactionsByDate(res.data.transactions) });
           this.setState({ date: 'day' });
+          this.setState({ loading: false });
+          this.setState({ buttonChangeLoading: false });
         } else {
           return Swal.fire({
             title: 'Error',
@@ -224,6 +234,7 @@ export default class LinkedAccount extends Component<Props, State> {
   }
 
   onWeekClick() {
+    this.setState({ buttonChangeLoading: true });
     const accessToken: any = localStorage.getItem('accessToken');
     UserService.getAllTransactions(accessToken, 'week')
       // eslint-disable-next-line consistent-return
@@ -232,6 +243,7 @@ export default class LinkedAccount extends Component<Props, State> {
           this.setState({ transactions: res.data.transactions });
           this.setState({ formattedDates: formatTransactionsByDate(res.data.transactions) });
           this.setState({ date: 'week' });
+          this.setState({ buttonChangeLoading: false });
         } else {
           return Swal.fire({
             title: 'Error',
@@ -242,6 +254,7 @@ export default class LinkedAccount extends Component<Props, State> {
   }
 
   onMonthClick() {
+    this.setState({ buttonChangeLoading: true });
     const accessToken: any = localStorage.getItem('accessToken');
     UserService.getAllTransactions(accessToken, 'month')
       // eslint-disable-next-line consistent-return
@@ -250,6 +263,7 @@ export default class LinkedAccount extends Component<Props, State> {
           this.setState({ transactions: res.data.transactions });
           this.setState({ formattedDates: formatTransactionsByDate(res.data.transactions) });
           this.setState({ date: 'month' });
+          this.setState({ buttonChangeLoading: false });
         } else {
           return Swal.fire({
             title: 'Error',
@@ -296,7 +310,19 @@ export default class LinkedAccount extends Component<Props, State> {
       date,
       transactionModalTransaction,
       showTransactionModal,
+      loading,
+      buttonChangeLoading,
     } = this.state;
+    console.log(buttonChangeLoading, 'buttonChangeLoading');
+    if (loading) {
+      return (
+        <div>
+          <PacmanLoader color="#36D7B7" loading={loading} size={15} />
+          <br />
+          <h2>Loading...</h2>
+        </div>
+      );
+    }
     return (
       <div className={showTransactionModal ? 'transactionsAndModal' : 'transactionsAndModalFalse'}>
         <NavBar />
@@ -324,23 +350,29 @@ export default class LinkedAccount extends Component<Props, State> {
                   <div className="col col-4">Payment Channel</div>
                 </li>
 
-                {transactions.length ? formattedDates.map((el: FormattedDate) => (
-                  <>
-                    <h4 style={{ marginTop: '40px', textDecoration: 'underline' }}>{moment(el.date).format('MMMM Do YYYY')}</h4>
-                    {el.data.map((els) => (
-                      <li onClick={() => this.onTransactionClick(els)} className="table-row">
-                        <div className="col col-1" data-label="name">{els.name ? els.name : els.merchant_name}</div>
-                        <div className="col col-2" data-label="amount">
-                          {getSymbolFromCurrency(els.iso_currency_code)}
-                          {els.amount.toString().indexOf('.') > 0 ? els.amount.toFixed(2) : els.amount}
-                        </div>
-                        <div className="col col-3" data-label="category">{els.category.join(', ')}</div>
-                        <div className="col col-4" data-label="paymentChannel">{els.payment_channel}</div>
-                      </li>
-                    ))}
+                {buttonChangeLoading ? <RingLoader /> : (
+                  <div>
 
-                  </>
-                )) : <h4>No transactions found</h4>}
+                    {transactions.length ? formattedDates.map((el: FormattedDate) => (
+                      <>
+                        <h4 style={{ marginTop: '40px', textDecoration: 'underline' }}>{moment(el.date).format('MMMM Do YYYY')}</h4>
+                        {el.data.map((els) => (
+                          <li onClick={() => this.onTransactionClick(els)} className="table-row">
+                            <div className="col col-1" data-label="name">{els.name ? els.name : els.merchant_name}</div>
+                            <div className="col col-2" data-label="amount">
+                              {getSymbolFromCurrency(els.iso_currency_code)}
+                              {els.amount.toString().indexOf('.') > 0 ? els.amount.toFixed(2) : els.amount}
+                            </div>
+                            <div className="col col-3" data-label="category">{els.category.join(', ')}</div>
+                            <div className="col col-4" data-label="paymentChannel">{els.payment_channel}</div>
+                          </li>
+                        ))}
+
+                      </>
+                    )) : <h4>No transactions found</h4>}
+                  </div>
+                )}
+
               </ul>
             </div>
           </div>

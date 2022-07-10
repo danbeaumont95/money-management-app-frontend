@@ -157,7 +157,7 @@ export default class Home extends Component<Props, State> {
 
     if (loading) {
       return (
-        <div style={{ border: '2px solid red' }}>
+        <div>
           <PacmanLoader color="#36D7B7" loading={loading} size={15} />
           <br />
           <h2>Loading...</h2>
