@@ -14,6 +14,7 @@ export default class NavBar extends Component<Props, State> {
     this.state = {
       firstName: '',
     };
+    this.handleSignOut = this.handleSignOut.bind(this);
   }
 
   componentDidMount() {
@@ -29,6 +30,15 @@ export default class NavBar extends Component<Props, State> {
       });
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  handleSignOut() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('userId');
+    // eslint-disable-next-line no-return-assign
+    return window.location.href = '/';
+  }
+
   render() {
     const { firstName } = this.state;
     return (
@@ -40,9 +50,9 @@ export default class NavBar extends Component<Props, State> {
           money
         </h3>
         <ul className="nav-links">
-
+          <a href="/plaidLink" className="nav-item">Linked new account</a>
           <a href="/linkedAccounts" className="nav-item">Linked accounts</a>
-          <button className="signOutButton" type="button">Sign out</button>
+          <button className="signOutButton" type="button" onClick={this.handleSignOut}>Sign out</button>
         </ul>
       </div>
     );
