@@ -50,7 +50,7 @@ export default class NavBar extends Component<Props, State> {
           money
         </h3>
         <ul className="nav-links">
-          <a href="/plaidLink" className="nav-item">Linked new account</a>
+          <a href="/plaidLink" className="nav-item">Link new account</a>
           <a href="/linkedAccounts" className="nav-item">Linked accounts</a>
           <button className="signOutButton" type="button" onClick={this.handleSignOut}>Sign out</button>
         </ul>

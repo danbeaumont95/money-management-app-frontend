@@ -1,7 +1,7 @@
 .linkedAccountCard {
-  border: 2px solid red;
-  -webkit-box-shadow: #FC0086 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
-          box-shadow: #FC0086 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+  border: 2px solid #5792d5;
+  -webkit-box-shadow: #5792d5 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+          box-shadow: #5792d5 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
   width: 400px;
   margin: auto;
   margin-bottom: 50px;

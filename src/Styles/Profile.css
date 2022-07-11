@@ -22,15 +22,33 @@
   display: flex;
 }
 
+@media (max-width: 500px) {
+  .allProfileContent .updateDetailsForm .detailsSection {
+    width: 350px;
+  }
+}
+
 .allProfileContent .updateDetailsForm .detailsSection .updateDetailsLabel {
   border-radius: 12px;
   width: 180px;
   margin: auto;
 }
 
+@media (max-width: 500px) {
+  .allProfileContent .updateDetailsForm .detailsSection .updateDetailsLabel {
+    width: 190px;
+  }
+}
+
 .allProfileContent .updateDetailsForm .detailsSection .detailsInput {
   border-radius: 4px;
   width: 600px;
   height: 30px;
+}
+
+@media (max-width: 500px) {
+  .allProfileContent .updateDetailsForm .detailsSection .detailsInput {
+    margin-left: 5px;
+  }
 }
 /*# sourceMappingURL=Profile.css.map */

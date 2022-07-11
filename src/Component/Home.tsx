@@ -11,7 +11,7 @@ import {
   BarElement,
 } from 'chart.js';
 import { Bar, Pie } from 'react-chartjs-2';
-import PacmanLoader from 'react-spinners/PacmanLoader';
+import { RingLoader } from 'react-spinners';
 import NavBar from './NavBar';
 import '../Styles/Home.css';
 import UserService from '../services/user';
@@ -158,9 +158,8 @@ export default class Home extends Component<Props, State> {
     if (loading) {
       return (
         <div>
-          <PacmanLoader color="#36D7B7" loading={loading} size={15} />
-          <br />
           <h2>Loading...</h2>
+          <RingLoader loading={loading} size={45} />
         </div>
       );
     }

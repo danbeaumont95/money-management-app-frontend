@@ -56,6 +56,12 @@
   }
 }
 
+@media (max-height: 1200px) {
+  .allLoginContent .form {
+    height: 400px;
+  }
+}
+
 .allLoginContent .emailSection {
   padding-top: 10px;
   padding-bottom: 10px;
