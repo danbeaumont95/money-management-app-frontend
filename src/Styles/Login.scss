@@ -39,6 +39,10 @@
       width: 80%;
       margin-top: 80px;
     }
+
+    @media (max-height: 1200px) {
+      height: 400px;
+    }
   }
 
   .emailSection {

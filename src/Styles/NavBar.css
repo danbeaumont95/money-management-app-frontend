@@ -15,6 +15,12 @@
   color: white;
 }
 
+@media (max-width: 450px) {
+  .title {
+    padding: 0;
+  }
+}
+
 .navbar {
   background-color: #5792d5;
   display: -webkit-box;
@@ -27,6 +33,7 @@
       -ms-flex-align: center;
           align-items: center;
   height: 50px;
+  width: 100%;
 }
 
 .nav-links {
@@ -35,11 +42,23 @@
   display: flex;
 }
 
+@media (max-width: 450px) {
+  .nav-links {
+    padding-left: 0;
+  }
+}
+
 .nav-item {
   display: inline-block;
   padding: 10px 15px;
   text-decoration: none;
   color: white;
+}
+
+@media (max-width: 450px) {
+  .nav-item {
+    padding: 0;
+  }
 }
 
 .signOutButton {
@@ -54,5 +73,12 @@
 .signOutButton:hover {
   background-color: black;
   cursor: pointer;
+}
+
+@media (max-width: 450px) {
+  .signOutButton {
+    padding-left: 0;
+    font-size: smaller;
+  }
 }
 /*# sourceMappingURL=NavBar.css.map */

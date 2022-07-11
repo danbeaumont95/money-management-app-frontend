@@ -13,6 +13,10 @@
 .title {
   padding-left: 15px;
   color: white;
+
+  @media (max-width: 450px) {
+    padding: 0;
+  }
 }
 
 .navbar {
@@ -21,10 +25,18 @@
   justify-content: space-between;
   align-items: center;
   height: 50px;
+  width: 100%;
+
+  // @media (max-width: 450px) {}
+
 }
 
 .nav-links {
   display: flex;
+
+  @media (max-width: 450px) {
+    padding-left: 0;
+  }
 }
 
 .nav-item {
@@ -32,6 +44,10 @@
   padding: 10px 15px;
   text-decoration: none;
   color: white;
+
+  @media (max-width: 450px) {
+    padding: 0;
+  }
 }
 
 .signOutButton {
@@ -45,5 +61,10 @@
   &:hover {
     background-color: black;
     cursor: pointer;
+  }
+
+  @media (max-width: 450px) {
+    padding-left: 0;
+    font-size: smaller;
   }
 }
