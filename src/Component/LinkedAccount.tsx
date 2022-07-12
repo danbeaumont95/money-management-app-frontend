@@ -313,7 +313,7 @@ export default class LinkedAccount extends Component<Props, State> {
       loading,
       buttonChangeLoading,
     } = this.state;
-    console.log(buttonChangeLoading, 'buttonChangeLoading');
+
     if (loading) {
       return (
         <div>

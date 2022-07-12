@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import '../Styles/LinkedAccounts.css';
 import Swal from 'sweetalert2';
 import getSymbolFromCurrency from 'currency-symbol-map';
+import { RingLoader } from 'react-spinners';
 import UserService from '../services/user';
 import NavBar from './NavBar';
 
@@ -26,6 +27,7 @@ export interface Account {
 type Props = {};
 type State = {
   accounts: Array<Account>;
+  loading: boolean;
 };
 
 export default class LinkedAccounts extends Component<Props, State> {
@@ -33,6 +35,7 @@ export default class LinkedAccounts extends Component<Props, State> {
     super(props);
     this.state = {
       accounts: [],
+      loading: true,
     };
   }
 
@@ -54,6 +57,7 @@ export default class LinkedAccounts extends Component<Props, State> {
           });
         }
         this.setState({ accounts: res.data.accounts });
+        this.setState({ loading: false });
       });
   }
 
@@ -64,11 +68,12 @@ export default class LinkedAccounts extends Component<Props, State> {
   }
 
   render() {
-    const { accounts } = this.state;
+    const { accounts, loading } = this.state;
     return (
       <>
         <NavBar />
         <h1>Linked Accounts</h1>
+        {loading ? <RingLoader loading={loading} size={45} /> : null}
         {accounts.length ? accounts.map((el) => (
           // eslint-disable-next-line jsx-a11y/click-events-have-key-events
           <div className="linkedAccountCard" onClick={() => this.onCardClick(el.account_id)}>
