@@ -119,6 +119,18 @@
   cursor: pointer;
 }
 
+@media (max-width: 450px) {
+  .buttonPressed {
+    width: 30%;
+  }
+}
+
+@media (max-width: 450px) {
+  .normalButton {
+    width: 30%;
+  }
+}
+
 .tableContainer {
   margin-left: auto;
   margin-right: auto;

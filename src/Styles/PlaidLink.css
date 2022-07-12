@@ -5,4 +5,16 @@
   margin: auto;
   margin-bottom: 20px;
 }
+
+@media (max-width: 450px) {
+  .plaidText {
+    width: 85%;
+  }
+}
+
+@media (max-width: 450px) {
+  .plaidImage {
+    width: 80%;
+  }
+}
 /*# sourceMappingURL=PlaidLink.css.map */
