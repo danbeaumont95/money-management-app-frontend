@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import '../Styles/LinkedAccount.css';
 import Swal from 'sweetalert2';
-import PacmanLoader from 'react-spinners/PacmanLoader';
+// import PacmanLoader from 'react-spinners/PacmanLoader';
 import { RingLoader } from 'react-spinners';
 import getSymbolFromCurrency from 'currency-symbol-map';
 import moment from 'moment';
@@ -317,9 +317,9 @@ export default class LinkedAccount extends Component<Props, State> {
     if (loading) {
       return (
         <div>
-          <PacmanLoader color="#36D7B7" loading={loading} size={15} />
           <br />
           <h2>Loading...</h2>
+          <RingLoader color="#36D7B7" loading={loading} />
         </div>
       );
     }
