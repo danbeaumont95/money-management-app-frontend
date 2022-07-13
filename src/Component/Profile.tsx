@@ -81,7 +81,6 @@ export default class Profile extends Component<Props, State> {
       mobileNumber,
       username,
     ).then((res) => {
-      console.log(res, 'res');
       if (res.data.message) {
         return Swal.fire({
           title: 'Success!',

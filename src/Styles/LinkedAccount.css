@@ -229,13 +229,13 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-left: 105px;
 }
 
-.transactionsAndModal {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+@media (min-width: 450px) {
+  .modalAndTransactionContainerModalShown {
+    width: 70%;
+    margin-left: 105px;
+  }
 }
 
 .transactionsAndModalFalse {
@@ -245,6 +245,12 @@
 .allButtonsModalShown {
   margin-left: 105px;
   padding-top: 20px;
+}
+
+@media (max-width: 450px) {
+  .allButtonsModalShown {
+    margin-left: 0px;
+  }
 }
 
 .allButtons {
