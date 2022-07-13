@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react';
-import PacmanLoader from 'react-spinners/PacmanLoader';
+// import PacmanLoader from 'react-spinners/PacmanLoader';
+import { RingLoader } from 'react-spinners';
 import Swal from 'sweetalert2';
 import UserService from '../services/user';
 import NavBar from './NavBar';
@@ -133,9 +134,9 @@ export default class Profile extends Component<Props, State> {
     if (loading) {
       return (
         <div>
-          <PacmanLoader color="#36D7B7" loading={loading} size={15} />
           <br />
           <h2>Loading...</h2>
+          <RingLoader color="#36D7B7" loading={loading} />
         </div>
       );
     }
